@@ -256,8 +256,8 @@ script = ExtResource("1_lnu2h")
 
 [node name="Pacman" parent="." instance=ExtResource("2_yqjtg")]
 z_index = 1
-position = Vector2(98, 97)
-scale = Vector2(3.7, 3.7)
+position = Vector2(98, 109)
+scale = Vector2(7.5, 7.5)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 scale = Vector2(4, 4)

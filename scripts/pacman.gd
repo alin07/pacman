@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var _animated_sprite = $AnimatedSprite2D
 
-@export var speed = 300
+@export var speed = 600
 
 
 func collide(new_pos):
@@ -39,9 +39,10 @@ func get_input(_delta):
 		velocity.y = 0
 		_animated_sprite.stop()
 	collide(new_pos)
-
-
-func _process(_delta):
-	get_input(_delta)
-	move_and_slide()
+	position.x = wrapf(position.x, 25, 1800)
 	
+
+
+func _process(delta):
+	get_input(delta)
+	move_and_slide()
