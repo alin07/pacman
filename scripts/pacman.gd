@@ -1,15 +1,12 @@
 extends CharacterBody2D
 
 @onready var _animated_sprite = $AnimatedSprite2D
-
 @export var speed = 600
-
 
 func collide(new_pos):
 	var collision_info = move_and_collide(new_pos)
 	if collision_info:
 		var collision_point = collision_info.get_position()
-		print(collision_point)
 
 func get_input(_delta):
 	var right = Input.is_action_pressed('ui_right')
@@ -40,8 +37,6 @@ func get_input(_delta):
 		_animated_sprite.stop()
 	collide(new_pos)
 	position.x = wrapf(position.x, 25, 1800)
-	
-
 
 func _process(delta):
 	get_input(delta)

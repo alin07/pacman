@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dm525uqo0w356"]
+
+[ext_resource type="Texture2D" uid="uid://bgspf44171iul" path="res://assets/ghosts/blinky.png" id="1_bygrv"]
+
+[node name="blinky" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(28.5, 28.5)
+scale = Vector2(3.4375, 3.4375)
+texture = ExtResource("1_bygrv")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(10, 10)
+polygon = PackedVector2Array(-9, 46, -9, 12, -6, 2, 8, -8, 28, -9, 36, -4, 43, 3, 46, 12, 46, 46, 42, 46, 37, 39, 32, 46, 26, 46, 21, 39, 17, 39, 12, 46, 4, 46, 0, 40, -5, 46)
