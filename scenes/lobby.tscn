@@ -28,8 +28,8 @@ text = "Start Game"
 
 [node name="StatusLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 2.3
+offset_left = 2.2
 offset_top = 70.8
-offset_right = 93.3
+offset_right = 93.2
 offset_bottom = 93.8
 text = "StatusLabel"
