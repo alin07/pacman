@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="pacman"
-run/main_scene="uid://yd8mtx1600ns"
+run/main_scene="uid://cuncgqtxvp6cr"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=1800
 window/size/viewport_height=2000
+
+[global_group]
+
+ghost=""
+pacman=""
 
 [input]
 

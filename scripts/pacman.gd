@@ -1,43 +1,40 @@
-extends CharacterBody2D
+extends "res://scripts/moving_character.gd"
+@onready var pacman = $AnimatedSprite2D
 
-@onready var _animated_sprite = $AnimatedSprite2D
-@export var speed = 600
+#@export var speed = 600
 
-func collide(new_pos):
-	var collision_info = move_and_collide(new_pos)
-	if collision_info:
-		var collision_point = collision_info.get_position()
+func get_input_direction() -> Vector2:
+	return Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 
-func get_input(_delta):
-	var right = Input.is_action_pressed('ui_right')
-	var left = Input.is_action_pressed('ui_left')
-	var up = Input.is_action_pressed('ui_up')
-	var down = Input.is_action_pressed('ui_down')
-	var new_pos = _animated_sprite.position
+func handle_collision(collision):
+	if collision and collision.get_collider().is_in_group("ghost"):
+		var collider = collision.get_collider()
+		if collider and collider.is_in_group("ghost"):
+			pacman_got_hit()
 
-	if up:
-		_animated_sprite.play("up")
-		velocity.y = -speed
-		velocity.x = 0
-	elif down:
-		_animated_sprite.play("down")
-		velocity.y = speed
-		velocity.x = 0
-	elif left:
-		_animated_sprite.play("left")
-		velocity.x = -speed
-		velocity.y = 0
-	elif right:
-		_animated_sprite.play("right")
-		velocity.x = speed
-		velocity.y = 0
-	else:
-		velocity.x = 0
-		velocity.y = 0
-		_animated_sprite.stop()
-	collide(new_pos)
-	position.x = wrapf(position.x, 25, 1800)
+#func _physics_process(delta):
+	#var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down") 
+	#if input_dir != Vector2.ZERO:
+		#var motion = input_dir.normalized() * speed * delta
+		#var collision = move_and_collide(motion)
+		#position.x = wrapf(position.x, 25, 1800)
+		#
+		#var anim_direction = input_dir.round()
+		#if direction_animations.has(anim_direction):
+			#pacman.play(direction_animations[anim_direction])
+		#
+		#if collision and collision.get_collider().is_in_group("ghost"):
+			#var collider = collision.get_collider()
+			#if collider and collider.is_in_group("pacman"): 
+				#pacman_got_hit()
+#
+#
+func pacman_got_hit():
+	# handle game over or death sequence
+	print("Game Over or lose a life")
 
-func _process(delta):
-	get_input(delta)
-	move_and_slide()
+
+func _process(_delta):
+	#get_input(delta)
+	pass
+	

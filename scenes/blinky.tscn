@@ -2,7 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://bgspf44171iul" path="res://assets/ghosts/blinky.png" id="1_bygrv"]
 
-[node name="blinky" type="CharacterBody2D"]
+[node name="blinky" type="CharacterBody2D" groups=["ghost"]]
+collision_layer = 4
+collision_mask = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(28.5, 28.5)

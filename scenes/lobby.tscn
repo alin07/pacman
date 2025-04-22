@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8ralsbthbi8w"]
+
+[ext_resource type="Script" uid="uid://cunybw3g51dp3" path="res://scripts/lobby.gd" id="1_o1atq"]
+
+[node name="Lobby" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(10, 10)
+script = ExtResource("1_o1atq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Players:"
+
+[node name="PlayerList" type="ItemList" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Start Game"
+
+[node name="StatusLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 2.3
+offset_top = 70.8
+offset_right = 93.3
+offset_bottom = 93.8
+text = "StatusLabel"

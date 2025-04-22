@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuncgqtxvp6cr"]
+
+[ext_resource type="Script" uid="uid://c5n4hj6p8pt63" path="res://scripts/main_menu.gd" id="1_l6cm7"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_l6cm7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 270.0
+offset_top = 264.0
+offset_right = 391.0
+offset_bottom = 392.0
+scale = Vector2(10, 10)
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Pac-Multiplayer"
+
+[node name="HostButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Host Game"
+
+[node name="JoinButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Join Game"
+
+[node name="IPInput" type="LineEdit" parent="VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Enter Host IP (e.g. 127.0.0.1)"
+
+[node name="StatusLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 644.0
+offset_top = 1692.0
+offset_right = 684.0
+offset_bottom = 1715.0
+scale = Vector2(10, 10)
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[connection signal="pressed" from="VBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]
