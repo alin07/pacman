@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-@export var speed = 600
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
+var speed = 300
 
 var direction_animations := {
 	Vector2.LEFT: "left",
@@ -9,6 +9,8 @@ var direction_animations := {
 	Vector2.UP: "up",
 	Vector2.DOWN: "down"
 }
+func get_speed(sp):
+	speed = sp
 
 func _physics_process(delta):
 	# this node is controlled by this peer — go ahead and process input
@@ -27,10 +29,8 @@ func _physics_process(delta):
 		
 		handle_collision(collision)
 
-# Override this in child classes
 func get_input_direction() -> Vector2:
 	return Vector2.ZERO
 
-# Override this in child classes
 func handle_collision(collision): 
 	pass
