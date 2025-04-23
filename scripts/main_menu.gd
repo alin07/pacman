@@ -8,16 +8,14 @@ const PORT = 7000
 const DEFAULT_SERVER_IP = "127.0.0.1" # IPv4 localhost
 const MAX_CONNECTIONS = 20
 
-
 func _ready():
 	name_input.max_length = 10
 	
-func _load_lobby(name = "", ip = "", is_host = false):
+func _load_lobby(name = "", ip = ""):
 	print("loading lobby")
 	await get_tree().create_timer(0.5).timeout
 	var lobby = preload("res://scenes/lobby.tscn").instantiate()
 	lobby.player_info["name"] = name 
-	lobby.set("is_host", is_host)
 	lobby.set("ip", ip)
 	get_tree().root.add_child(lobby)
 	queue_free()
@@ -26,7 +24,6 @@ func _change_scene(scene_path: String):
 	var scene = load(scene_path).instantiate()
 	get_tree().root.add_child(scene)
 	queue_free()  # remove main menu
-
 
 func _on_host_button_pressed() -> void:
 	print("host button pressed")
@@ -42,7 +39,7 @@ func _on_host_button_pressed() -> void:
 		return
 	status_label.text = "Hosting..."
 	print(get_preferred_ip())
-	_load_lobby(name, get_preferred_ip(), true)
+	_load_lobby(name, get_preferred_ip())
 
 func get_preferred_ip() -> String:
 	for ip in IP.get_local_addresses():
@@ -65,7 +62,7 @@ func _on_join_button_pressed() -> void:
 	#MultiplayerManager.join_game(ip)
 	join_game(ip)
 	status_label.text = "Loading..."
-	_load_lobby(name, ip, false)
+	_load_lobby(name, ip)
 
 
 func join_game(address = ""):
@@ -80,7 +77,6 @@ func join_game(address = ""):
 	#player_connected.emit(players_loaded+1, player_info)
 	return true
 
-
 func create_game():
 	var peer = ENetMultiplayerPeer.new()
 	var error = peer.create_server(PORT, MAX_CONNECTIONS)
@@ -89,7 +85,4 @@ func create_game():
 		
 	multiplayer.multiplayer_peer = peer
 
-	#players[1] = player_info
-	#print(players[1])
-	#player_connected.emit(1, player_info)
 	return true

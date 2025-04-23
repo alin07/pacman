@@ -8,8 +8,6 @@ signal player_connected(peer_id, player_info)
 signal player_disconnected(peer_id)
 signal server_disconnected
 
-
-@export var is_host: bool = false
 @export var ip: String = ""
 
 const PORT = 7000
@@ -31,11 +29,11 @@ func on_ready():
 	multiplayer.server_disconnected.connect(_on_server_disconnected)
 
 
-func join_game(address = ""):
-	if address.is_empty():
-		address = DEFAULT_SERVER_IP
+func join_game():
+	if ip == null:
+		ip = DEFAULT_SERVER_IP
 	var peer = ENetMultiplayerPeer.new()
-	var error = peer.create_client(address, PORT)
+	var error = peer.create_client(ip, PORT)
 	if error != OK:
 		push_error("Failed to connect to server: %s" % error)
 		return error
@@ -60,16 +58,12 @@ func remove_multiplayer_peer():
 	multiplayer.multiplayer_peer = null
 	players.clear()
 
-
-# When the server decides to start the game from a UI scene,
-# do Lobby.load_game.rpc(filepath)
-@rpc("call_local", "reliable")
+@rpc("any_peer")
 func load_game():
 	var game_scene = preload("res://scenes/game.tscn").instantiate()
 	get_tree().root.add_child(game_scene)
 	queue_free()
 	
-
 # Every peer will call this when they have loaded the game scene.
 @rpc("any_peer", "call_local", "reliable")
 func player_loaded():
@@ -132,18 +126,19 @@ func _ready():
 		create_game()
 	else:
 		start_button.hide()
-		join_game(ip)
+		join_game()
 #
 func _on_start_button_pressed() -> void:
-	if not is_multiplayer_authority():
-		return
-	load_game()
+	if multiplayer.is_server():
+		load_game()
+		rpc("load_game")
+
 
 func update_player_list():
 	print("Updating player list:", players)
 	player_list.clear()
 	for id in players:
 		print(players[id])
-		var name = "You (%s)" % players[id].name if id == multiplayer.get_unique_id() else "Player: %s" % players[id].name
+		var name = "%s (you)" % players[id].name if id == multiplayer.get_unique_id() else "Player: %s" % players[id].name
 		player_list.add_item(name)
 		print("Adding player:", name)
