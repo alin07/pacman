@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://c8ralsbthbi8w"]
+[gd_scene load_steps=7 format=3 uid="uid://c8ralsbthbi8w"]
 
 [ext_resource type="Script" uid="uid://cunybw3g51dp3" path="res://scripts/lobby.gd" id="1_o1atq"]
+[ext_resource type="Texture2D" uid="uid://dyeyotjmutn44" path="res://assets/pacman-right/1.png" id="2_apkv3"]
+[ext_resource type="Texture2D" uid="uid://bgspf44171iul" path="res://assets/ghosts/blinky.png" id="3_omrgh"]
+[ext_resource type="Texture2D" uid="uid://dijj0vnq13i65" path="res://assets/ghosts/clyde.png" id="4_ncsg4"]
+[ext_resource type="Texture2D" uid="uid://c4gwci1qxcr28" path="res://assets/ghosts/inky.png" id="5_07nfq"]
+[ext_resource type="Texture2D" uid="uid://c57r7lprr8xvu" path="res://assets/ghosts/pinky.png" id="6_oipnb"]
 
 [node name="Lobby" type="Control"]
 layout_mode = 3
@@ -41,7 +46,36 @@ text = "Start Game"
 layout_mode = 2
 offset_left = 8.0
 offset_top = 31.0
-offset_right = 174.0
-offset_bottom = 135.0
+offset_right = 176.0
+offset_bottom = 109.0
+
+[node name="RoleLabel" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="RoleSelector" type="OptionButton" parent="."]
+layout_mode = 0
+offset_left = 8.5
+offset_top = 116.6
+offset_right = 127.5
+offset_bottom = 136.6
+item_count = 5
+popup/item_0/text = "Pac Man"
+popup/item_0/icon = ExtResource("2_apkv3")
+popup/item_0/id = 0
+popup/item_1/text = "Blinky"
+popup/item_1/icon = ExtResource("3_omrgh")
+popup/item_1/id = 1
+popup/item_2/text = "Clyde"
+popup/item_2/icon = ExtResource("4_ncsg4")
+popup/item_2/id = 2
+popup/item_3/text = "Inky"
+popup/item_3/icon = ExtResource("5_07nfq")
+popup/item_3/id = 3
+popup/item_4/text = "Pinky"
+popup/item_4/icon = ExtResource("6_oipnb")
+popup/item_4/id = 4
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="item_selected" from="RoleSelector" to="." method="_on_role_selector_item_selected"]

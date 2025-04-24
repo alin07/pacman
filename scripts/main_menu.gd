@@ -11,11 +11,12 @@ const MAX_CONNECTIONS = 20
 func _ready():
 	name_input.max_length = 10
 	
-func _load_lobby(name = "", ip = ""):
+func _load_lobby(name = "", ip = "", role = ""):
 	print("loading lobby")
 	await get_tree().create_timer(0.5).timeout
 	var lobby = preload("res://scenes/lobby.tscn").instantiate()
 	lobby.player_info["name"] = name 
+	lobby.player_info["role"] = role
 	lobby.set("ip", ip)
 	get_tree().root.add_child(lobby)
 	queue_free()

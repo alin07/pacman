@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-MultiplayerManager="*res://scripts/multiplayer_manager.gd"
+Players="*res://scripts/players.gd"
 
 [display]
 
