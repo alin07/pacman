@@ -2,6 +2,7 @@ extends Node2D
 
 var roles = {1: "pacman", 2: "ghost", 3: "ghost"}  # Example: {1: "pacman", 2: "ghost", 3: "ghost"}
 var players = {}
+
 const PACMAN_SCENE = preload("res://scenes/pacman.tscn")
 const GHOST_SCENE = preload("res://scenes/blinky.tscn")
 

@@ -35,6 +35,7 @@ text = "Host Game"
 
 [node name="IPInput" type="LineEdit" parent="VBoxContainer"]
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../JoinButton")
 placeholder_text = "Enter Host IP (e.g. 127.0.0.1)"
 
 [node name="JoinButton" type="Button" parent="VBoxContainer"]

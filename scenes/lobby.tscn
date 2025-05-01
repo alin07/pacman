@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c8ralsbthbi8w"]
+[gd_scene load_steps=8 format=3 uid="uid://c8ralsbthbi8w"]
 
 [ext_resource type="Script" uid="uid://cunybw3g51dp3" path="res://scripts/lobby.gd" id="1_o1atq"]
 [ext_resource type="Texture2D" uid="uid://dyeyotjmutn44" path="res://assets/pacman-right/1.png" id="2_apkv3"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dijj0vnq13i65" path="res://assets/ghosts/clyde.png" id="4_ncsg4"]
 [ext_resource type="Texture2D" uid="uid://c4gwci1qxcr28" path="res://assets/ghosts/inky.png" id="5_07nfq"]
 [ext_resource type="Texture2D" uid="uid://c57r7lprr8xvu" path="res://assets/ghosts/pinky.png" id="6_oipnb"]
+[ext_resource type="PackedScene" uid="uid://db06eyl243dh5" path="res://scenes/character_select.tscn" id="7_omrgh"]
 
 [node name="Lobby" type="Control"]
 layout_mode = 3
@@ -17,6 +18,7 @@ scale = Vector2(10, 10)
 script = ExtResource("1_o1atq")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 8.0
 offset_top = 4.0
@@ -28,6 +30,7 @@ layout_mode = 2
 text = "Players:"
 
 [node name="StatusLabel" type="Label" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 13.1
 offset_top = 138.1
@@ -35,6 +38,7 @@ offset_right = 71.1
 offset_bottom = 161.1
 
 [node name="StartButton" type="Button" parent="."]
+visible = false
 layout_mode = 2
 offset_left = 11.7
 offset_top = 162.1
@@ -43,6 +47,7 @@ offset_bottom = 193.1
 text = "Start Game"
 
 [node name="PlayerList" type="ItemList" parent="."]
+visible = false
 layout_mode = 2
 offset_left = 8.0
 offset_top = 31.0
@@ -50,11 +55,13 @@ offset_right = 176.0
 offset_bottom = 109.0
 
 [node name="RoleLabel" type="Label" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="RoleSelector" type="OptionButton" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 8.5
 offset_top = 116.6
@@ -76,6 +83,8 @@ popup/item_3/id = 3
 popup/item_4/text = "Pinky"
 popup/item_4/icon = ExtResource("6_oipnb")
 popup/item_4/id = 4
+
+[node name="CharacterSelect" parent="." instance=ExtResource("7_omrgh")]
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="item_selected" from="RoleSelector" to="." method="_on_role_selector_item_selected"]

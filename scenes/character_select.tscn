@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://db06eyl243dh5"]
+
+[ext_resource type="Script" uid="uid://dnrcwx65wsete" path="res://scripts/character_select.gd" id="1_jgus3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_x8mhf"]
+font_size = 100
+
+[sub_resource type="LabelSettings" id="LabelSettings_jgus3"]
+font_size = 50
+
+[node name="CharacterSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1803.0
+offset_bottom = 1996.0
+script = ExtResource("1_jgus3")
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 0
+offset_top = 39.0
+offset_right = 1801.0
+offset_bottom = 181.0
+text = "Select Your Character:"
+label_settings = SubResource("LabelSettings_x8mhf")
+horizontal_alignment = 1
+
+[node name="PlayersPanel" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.012
+anchor_bottom = 0.007
+offset_top = 281.0
+offset_right = 1783.36
+offset_bottom = 1856.03
+
+[node name="StatusLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 190.0
+offset_right = 1792.0
+offset_bottom = 245.0
+text = "status here..."
+label_settings = SubResource("LabelSettings_jgus3")
+horizontal_alignment = 1
+
+[node name="StartButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 641.0
+offset_top = 1839.0
+offset_right = 1204.0
+offset_bottom = 1982.0
+theme_override_font_sizes/font_size = 75
+text = "Start game"
+autowrap_mode = 2

@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://dl1y3eolxj3rj"]
+
+[ext_resource type="Script" uid="uid://bpi3q2nv73c7g" path="res://scripts/player_slot.gd" id="1_m0w6y"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_m0w6y"]
+font_size = 100
+
+[sub_resource type="Theme" id="Theme_m0w6y"]
+default_font_size = 50
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_m0w6y"]
+
+[node name="PlayerSlot" type="VBoxContainer"]
+offset_right = 1801.0
+offset_bottom = 2004.0
+script = ExtResource("1_m0w6y")
+
+[node name="PlayerName" type="Label" parent="."]
+layout_mode = 2
+text = "text here"
+label_settings = SubResource("LabelSettings_m0w6y")
+horizontal_alignment = 1
+
+[node name="CharacterContainer" type="VBoxContainer" parent="."]
+layout_direction = 2
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CharacterContainer"]
+layout_mode = 2
+
+[node name="LeftButton" type="Button" parent="CharacterContainer/HBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_m0w6y")
+text = "<"
+
+[node name="CharacterSprite" type="TextureRect" parent="CharacterContainer/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("ViewportTexture_m0w6y")
+expand_mode = 2
+
+[node name="RightButton" type="Button" parent="CharacterContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = ">"
+
+[node name="ReadyLabel" type="Label" parent="."]
+layout_mode = 2
+
+[connection signal="pressed" from="CharacterContainer/HBoxContainer/LeftButton" to="." method="_on_left_button_pressed"]
+[connection signal="pressed" from="CharacterContainer/HBoxContainer/RightButton" to="." method="_on_right_button_pressed"]
